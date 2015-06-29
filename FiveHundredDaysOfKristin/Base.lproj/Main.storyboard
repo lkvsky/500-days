@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="rup-9b-qP8">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Allura-Regular.otf">
+            <string>Allura-Regular</string>
+        </mutableArray>
+    </customFonts>
+    <scenes>
+        <!--500 Days of Kristin-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kristin" translatesAutoresizingMaskIntoConstraints="NO" id="7EM-pF-Ibc">
+                                <rect key="frame" x="175" y="175" width="250" height="250"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="5fv-AE-Df0"/>
+                                    <constraint firstAttribute="width" constant="250" id="Dva-2O-IMY"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nPp-ff-gkb">
+                                <rect key="frame" x="200" y="410" width="200" height="0.0"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="JDN-HJ-Mik"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Will she Balance in Heels?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tDO-EY-gdp">
+                                <rect key="frame" x="148" y="433" width="305" height="61"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="305" id="9eV-LX-RvL"/>
+                                    <constraint firstAttribute="height" constant="61" id="ozJ-X1-f8A"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Allura-Regular" family="Allura" pointSize="31"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="2NY-zc-Ykb">
+                                <rect key="frame" x="16" y="103" width="151" height="497"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="151" id="bhh-bc-aMk"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="Vh0-ye-vqq"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="fGv-Hg-TXn"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="nPp-ff-gkb" firstAttribute="centerX" secondItem="7EM-pF-Ibc" secondAttribute="centerX" id="0gp-3E-Tsa"/>
+                            <constraint firstItem="nPp-ff-gkb" firstAttribute="top" secondItem="7EM-pF-Ibc" secondAttribute="bottom" constant="-15" id="76Q-nV-RII"/>
+                            <constraint firstItem="7EM-pF-Ibc" firstAttribute="centerX" secondItem="tDO-EY-gdp" secondAttribute="centerX" constant="-0.5" id="7A4-tM-2tL"/>
+                            <constraint firstItem="tDO-EY-gdp" firstAttribute="top" secondItem="7EM-pF-Ibc" secondAttribute="bottom" constant="8" symbolic="YES" id="8bN-QW-Bcn"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="2NY-zc-Ykb" secondAttribute="bottom" id="Cpy-vH-PSu"/>
+                            <constraint firstAttribute="centerX" secondItem="7EM-pF-Ibc" secondAttribute="centerX" id="Su2-Uq-l9l"/>
+                            <constraint firstAttribute="centerY" secondItem="7EM-pF-Ibc" secondAttribute="centerY" id="dEN-OQ-mBQ"/>
+                            <constraint firstItem="2NY-zc-Ykb" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="39" id="gmx-yk-zRu"/>
+                            <constraint firstItem="2NY-zc-Ykb" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="tY4-Mb-ztt"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="500 Days of Kristin" id="TdU-NW-aEZ"/>
+                    <connections>
+                        <outlet property="headlineView" destination="nPp-ff-gkb" id="aFf-RK-sgi"/>
+                        <outlet property="imageView" destination="7EM-pF-Ibc" id="zh3-iS-4Km"/>
+                        <outlet property="kristinCenterX" destination="Su2-Uq-l9l" id="al9-RR-4p4"/>
+                        <outlet property="kristinCenterY" destination="dEN-OQ-mBQ" id="60C-Yy-nFm"/>
+                        <outlet property="taglineView" destination="tDO-EY-gdp" id="XJg-qH-FpQ"/>
+                        <outlet property="tbView" destination="2NY-zc-Ykb" id="iG1-br-PCH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1139" y="-289"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="S29-JU-f2x">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rup-9b-qP8" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="eFP-t0-0CD">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="M3O-FF-X7Q"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9mJ-Vm-e7x" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="296" y="-289"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="kristin" width="636" height="399"/>
+    </resources>
+</document>

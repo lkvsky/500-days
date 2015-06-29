@@ -1,0 +1,576 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3C019A7F1B446440004BEE98 /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C019A7E1B446440004BEE98 /* Post.m */; };
+		3C019A861B4471E8004BEE98 /* TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C019A841B4471E8004BEE98 /* TableViewCell.m */; };
+		3C019A871B4471E8004BEE98 /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C019A851B4471E8004BEE98 /* TableViewCell.xib */; };
+		3C7945A51B5840D300BDF22D /* KristinWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C7945A41B5840D300BDF22D /* KristinWebViewController.xib */; };
+		3CC937FE1B3DD9A300B34EF4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC937FD1B3DD9A300B34EF4 /* main.m */; };
+		3CC938011B3DD9A300B34EF4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC938001B3DD9A300B34EF4 /* AppDelegate.m */; };
+		3CC938041B3DD9A300B34EF4 /* FiveHundredDaysOfKristin.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3CC938021B3DD9A300B34EF4 /* FiveHundredDaysOfKristin.xcdatamodeld */; };
+		3CC938071B3DD9A300B34EF4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC938061B3DD9A300B34EF4 /* ViewController.m */; };
+		3CC9380A1B3DD9A300B34EF4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CC938081B3DD9A300B34EF4 /* Main.storyboard */; };
+		3CC9380C1B3DD9A300B34EF4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3CC9380B1B3DD9A300B34EF4 /* Images.xcassets */; };
+		3CC9380F1B3DD9A300B34EF4 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CC9380D1B3DD9A300B34EF4 /* LaunchScreen.xib */; };
+		3CC9381B1B3DD9A300B34EF4 /* FiveHundredDaysOfKristinTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC9381A1B3DD9A300B34EF4 /* FiveHundredDaysOfKristinTests.m */; };
+		3CC938271B3DDAF500B34EF4 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC938261B3DDAF500B34EF4 /* DataManager.m */; };
+		3CC9382B1B3DE60400B34EF4 /* ColorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC9382A1B3DE60400B34EF4 /* ColorManager.m */; };
+		3CC9382E1B3DEF9300B34EF4 /* Allura-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3CC9382D1B3DED2C00B34EF4 /* Allura-Regular.otf */; };
+		3CC938401B3F231D00B34EF4 /* TimelineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC9383F1B3F231D00B34EF4 /* TimelineView.m */; };
+		3CC938451B3F4EA000B34EF4 /* KristinWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC938431B3F4EA000B34EF4 /* KristinWebViewController.m */; };
+		3CC9384A1B4321F900B34EF4 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CC938481B4321F900B34EF4 /* Fabric.framework */; };
+		3CC9384B1B4321F900B34EF4 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CC938491B4321F900B34EF4 /* Crashlytics.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3CC938151B3DD9A300B34EF4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3CC937F01B3DD9A300B34EF4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3CC937F71B3DD9A300B34EF4;
+			remoteInfo = FiveHundredDaysOfKristin;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		3C019A7D1B446440004BEE98 /* Post.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Post.h; sourceTree = "<group>"; };
+		3C019A7E1B446440004BEE98 /* Post.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Post.m; sourceTree = "<group>"; };
+		3C019A831B4471E8004BEE98 /* TableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewCell.h; sourceTree = "<group>"; };
+		3C019A841B4471E8004BEE98 /* TableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewCell.m; sourceTree = "<group>"; };
+		3C019A851B4471E8004BEE98 /* TableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
+		3C7945A41B5840D300BDF22D /* KristinWebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KristinWebViewController.xib; sourceTree = "<group>"; };
+		3CC937F81B3DD9A300B34EF4 /* FiveHundredDaysOfKristin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FiveHundredDaysOfKristin.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3CC937FC1B3DD9A300B34EF4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3CC937FD1B3DD9A300B34EF4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		3CC937FF1B3DD9A300B34EF4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		3CC938001B3DD9A300B34EF4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		3CC938031B3DD9A300B34EF4 /* FiveHundredDaysOfKristin.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FiveHundredDaysOfKristin.xcdatamodel; sourceTree = "<group>"; };
+		3CC938051B3DD9A300B34EF4 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		3CC938061B3DD9A300B34EF4 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		3CC938091B3DD9A300B34EF4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3CC9380B1B3DD9A300B34EF4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		3CC9380E1B3DD9A300B34EF4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		3CC938141B3DD9A300B34EF4 /* FiveHundredDaysOfKristinTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FiveHundredDaysOfKristinTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3CC938191B3DD9A300B34EF4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3CC9381A1B3DD9A300B34EF4 /* FiveHundredDaysOfKristinTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FiveHundredDaysOfKristinTests.m; sourceTree = "<group>"; };
+		3CC938251B3DDAF500B34EF4 /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
+		3CC938261B3DDAF500B34EF4 /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
+		3CC938291B3DE60400B34EF4 /* ColorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorManager.h; sourceTree = "<group>"; };
+		3CC9382A1B3DE60400B34EF4 /* ColorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorManager.m; sourceTree = "<group>"; };
+		3CC9382D1B3DED2C00B34EF4 /* Allura-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Allura-Regular.otf"; sourceTree = "<group>"; };
+		3CC9383E1B3F231D00B34EF4 /* TimelineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelineView.h; sourceTree = "<group>"; };
+		3CC9383F1B3F231D00B34EF4 /* TimelineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelineView.m; sourceTree = "<group>"; };
+		3CC938421B3F4EA000B34EF4 /* KristinWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KristinWebViewController.h; sourceTree = "<group>"; };
+		3CC938431B3F4EA000B34EF4 /* KristinWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KristinWebViewController.m; sourceTree = "<group>"; };
+		3CC938481B4321F900B34EF4 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		3CC938491B4321F900B34EF4 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3CC937F51B3DD9A300B34EF4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3CC9384B1B4321F900B34EF4 /* Crashlytics.framework in Frameworks */,
+				3CC9384A1B4321F900B34EF4 /* Fabric.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3CC938111B3DD9A300B34EF4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3CC937EF1B3DD9A300B34EF4 = {
+			isa = PBXGroup;
+			children = (
+				3CC937FA1B3DD9A300B34EF4 /* FiveHundredDaysOfKristin */,
+				3CC938171B3DD9A300B34EF4 /* FiveHundredDaysOfKristinTests */,
+				3CC937F91B3DD9A300B34EF4 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3CC937F91B3DD9A300B34EF4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3CC937F81B3DD9A300B34EF4 /* FiveHundredDaysOfKristin.app */,
+				3CC938141B3DD9A300B34EF4 /* FiveHundredDaysOfKristinTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3CC937FA1B3DD9A300B34EF4 /* FiveHundredDaysOfKristin */ = {
+			isa = PBXGroup;
+			children = (
+				3CC938481B4321F900B34EF4 /* Fabric.framework */,
+				3CC938491B4321F900B34EF4 /* Crashlytics.framework */,
+				3CC938411B3F4E8200B34EF4 /* Controllers */,
+				3CC9383D1B3F22FE00B34EF4 /* Views */,
+				3CC9382C1B3DED1900B34EF4 /* Fonts */,
+				3CC938281B3DE5E900B34EF4 /* Utilities */,
+				3CC938241B3DDAD500B34EF4 /* Models */,
+				3CC937FF1B3DD9A300B34EF4 /* AppDelegate.h */,
+				3CC938001B3DD9A300B34EF4 /* AppDelegate.m */,
+				3CC9380B1B3DD9A300B34EF4 /* Images.xcassets */,
+				3CC9380D1B3DD9A300B34EF4 /* LaunchScreen.xib */,
+				3CC937FB1B3DD9A300B34EF4 /* Supporting Files */,
+			);
+			path = FiveHundredDaysOfKristin;
+			sourceTree = "<group>";
+		};
+		3CC937FB1B3DD9A300B34EF4 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3CC937FC1B3DD9A300B34EF4 /* Info.plist */,
+				3CC937FD1B3DD9A300B34EF4 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3CC938171B3DD9A300B34EF4 /* FiveHundredDaysOfKristinTests */ = {
+			isa = PBXGroup;
+			children = (
+				3CC9381A1B3DD9A300B34EF4 /* FiveHundredDaysOfKristinTests.m */,
+				3CC938181B3DD9A300B34EF4 /* Supporting Files */,
+			);
+			path = FiveHundredDaysOfKristinTests;
+			sourceTree = "<group>";
+		};
+		3CC938181B3DD9A300B34EF4 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3CC938191B3DD9A300B34EF4 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3CC938241B3DDAD500B34EF4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3C019A7D1B446440004BEE98 /* Post.h */,
+				3C019A7E1B446440004BEE98 /* Post.m */,
+				3CC938251B3DDAF500B34EF4 /* DataManager.h */,
+				3CC938261B3DDAF500B34EF4 /* DataManager.m */,
+				3CC938021B3DD9A300B34EF4 /* FiveHundredDaysOfKristin.xcdatamodeld */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		3CC938281B3DE5E900B34EF4 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				3CC938291B3DE60400B34EF4 /* ColorManager.h */,
+				3CC9382A1B3DE60400B34EF4 /* ColorManager.m */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
+		3CC9382C1B3DED1900B34EF4 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				3CC9382D1B3DED2C00B34EF4 /* Allura-Regular.otf */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
+		3CC9383D1B3F22FE00B34EF4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3CC9383E1B3F231D00B34EF4 /* TimelineView.h */,
+				3CC9383F1B3F231D00B34EF4 /* TimelineView.m */,
+				3C019A831B4471E8004BEE98 /* TableViewCell.h */,
+				3C019A841B4471E8004BEE98 /* TableViewCell.m */,
+				3C019A851B4471E8004BEE98 /* TableViewCell.xib */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		3CC938411B3F4E8200B34EF4 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				3CC938051B3DD9A300B34EF4 /* ViewController.h */,
+				3CC938061B3DD9A300B34EF4 /* ViewController.m */,
+				3CC938081B3DD9A300B34EF4 /* Main.storyboard */,
+				3CC938421B3F4EA000B34EF4 /* KristinWebViewController.h */,
+				3CC938431B3F4EA000B34EF4 /* KristinWebViewController.m */,
+				3C7945A41B5840D300BDF22D /* KristinWebViewController.xib */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3CC937F71B3DD9A300B34EF4 /* FiveHundredDaysOfKristin */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3CC9381E1B3DD9A300B34EF4 /* Build configuration list for PBXNativeTarget "FiveHundredDaysOfKristin" */;
+			buildPhases = (
+				3CC937F41B3DD9A300B34EF4 /* Sources */,
+				3CC937F51B3DD9A300B34EF4 /* Frameworks */,
+				3CC937F61B3DD9A300B34EF4 /* Resources */,
+				3CC938471B4321E500B34EF4 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FiveHundredDaysOfKristin;
+			productName = FiveHundredDaysOfKristin;
+			productReference = 3CC937F81B3DD9A300B34EF4 /* FiveHundredDaysOfKristin.app */;
+			productType = "com.apple.product-type.application";
+		};
+		3CC938131B3DD9A300B34EF4 /* FiveHundredDaysOfKristinTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3CC938211B3DD9A300B34EF4 /* Build configuration list for PBXNativeTarget "FiveHundredDaysOfKristinTests" */;
+			buildPhases = (
+				3CC938101B3DD9A300B34EF4 /* Sources */,
+				3CC938111B3DD9A300B34EF4 /* Frameworks */,
+				3CC938121B3DD9A300B34EF4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3CC938161B3DD9A300B34EF4 /* PBXTargetDependency */,
+			);
+			name = FiveHundredDaysOfKristinTests;
+			productName = FiveHundredDaysOfKristinTests;
+			productReference = 3CC938141B3DD9A300B34EF4 /* FiveHundredDaysOfKristinTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3CC937F01B3DD9A300B34EF4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0630;
+				ORGANIZATIONNAME = "Gawker Media";
+				TargetAttributes = {
+					3CC937F71B3DD9A300B34EF4 = {
+						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = 3229ATD34P;
+					};
+					3CC938131B3DD9A300B34EF4 = {
+						CreatedOnToolsVersion = 6.3.1;
+						TestTargetID = 3CC937F71B3DD9A300B34EF4;
+					};
+				};
+			};
+			buildConfigurationList = 3CC937F31B3DD9A300B34EF4 /* Build configuration list for PBXProject "FiveHundredDaysOfKristin" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3CC937EF1B3DD9A300B34EF4;
+			productRefGroup = 3CC937F91B3DD9A300B34EF4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3CC937F71B3DD9A300B34EF4 /* FiveHundredDaysOfKristin */,
+				3CC938131B3DD9A300B34EF4 /* FiveHundredDaysOfKristinTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3CC937F61B3DD9A300B34EF4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3C7945A51B5840D300BDF22D /* KristinWebViewController.xib in Resources */,
+				3CC9382E1B3DEF9300B34EF4 /* Allura-Regular.otf in Resources */,
+				3C019A871B4471E8004BEE98 /* TableViewCell.xib in Resources */,
+				3CC9380A1B3DD9A300B34EF4 /* Main.storyboard in Resources */,
+				3CC9380F1B3DD9A300B34EF4 /* LaunchScreen.xib in Resources */,
+				3CC9380C1B3DD9A300B34EF4 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3CC938121B3DD9A300B34EF4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3CC938471B4321E500B34EF4 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run d5fa13dcccb309a0e9011863c1335089a14445b2 4957527971d97a39f064e340c153855ae586f9629b5b5f7a709bdefc521dd3ed";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3CC937F41B3DD9A300B34EF4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3CC938011B3DD9A300B34EF4 /* AppDelegate.m in Sources */,
+				3CC9382B1B3DE60400B34EF4 /* ColorManager.m in Sources */,
+				3CC938271B3DDAF500B34EF4 /* DataManager.m in Sources */,
+				3C019A861B4471E8004BEE98 /* TableViewCell.m in Sources */,
+				3CC938401B3F231D00B34EF4 /* TimelineView.m in Sources */,
+				3C019A7F1B446440004BEE98 /* Post.m in Sources */,
+				3CC938041B3DD9A300B34EF4 /* FiveHundredDaysOfKristin.xcdatamodeld in Sources */,
+				3CC938071B3DD9A300B34EF4 /* ViewController.m in Sources */,
+				3CC938451B3F4EA000B34EF4 /* KristinWebViewController.m in Sources */,
+				3CC937FE1B3DD9A300B34EF4 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3CC938101B3DD9A300B34EF4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3CC9381B1B3DD9A300B34EF4 /* FiveHundredDaysOfKristinTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3CC938161B3DD9A300B34EF4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3CC937F71B3DD9A300B34EF4 /* FiveHundredDaysOfKristin */;
+			targetProxy = 3CC938151B3DD9A300B34EF4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		3CC938081B3DD9A300B34EF4 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3CC938091B3DD9A300B34EF4 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		3CC9380D1B3DD9A300B34EF4 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3CC9380E1B3DD9A300B34EF4 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3CC9381C1B3DD9A300B34EF4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3CC9381D1B3DD9A300B34EF4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3CC9381F1B3DD9A300B34EF4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/FiveHundredDaysOfKristin",
+				);
+				INFOPLIST_FILE = FiveHundredDaysOfKristin/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		3CC938201B3DD9A300B34EF4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/FiveHundredDaysOfKristin",
+				);
+				INFOPLIST_FILE = FiveHundredDaysOfKristin/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		3CC938221B3DD9A300B34EF4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = FiveHundredDaysOfKristinTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FiveHundredDaysOfKristin.app/FiveHundredDaysOfKristin";
+			};
+			name = Debug;
+		};
+		3CC938231B3DD9A300B34EF4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = FiveHundredDaysOfKristinTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FiveHundredDaysOfKristin.app/FiveHundredDaysOfKristin";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3CC937F31B3DD9A300B34EF4 /* Build configuration list for PBXProject "FiveHundredDaysOfKristin" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3CC9381C1B3DD9A300B34EF4 /* Debug */,
+				3CC9381D1B3DD9A300B34EF4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3CC9381E1B3DD9A300B34EF4 /* Build configuration list for PBXNativeTarget "FiveHundredDaysOfKristin" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3CC9381F1B3DD9A300B34EF4 /* Debug */,
+				3CC938201B3DD9A300B34EF4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3CC938211B3DD9A300B34EF4 /* Build configuration list for PBXNativeTarget "FiveHundredDaysOfKristinTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3CC938221B3DD9A300B34EF4 /* Debug */,
+				3CC938231B3DD9A300B34EF4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		3CC938021B3DD9A300B34EF4 /* FiveHundredDaysOfKristin.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				3CC938031B3DD9A300B34EF4 /* FiveHundredDaysOfKristin.xcdatamodel */,
+			);
+			currentVersion = 3CC938031B3DD9A300B34EF4 /* FiveHundredDaysOfKristin.xcdatamodel */;
+			path = FiveHundredDaysOfKristin.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 3CC937F01B3DD9A300B34EF4 /* Project object */;
+}
