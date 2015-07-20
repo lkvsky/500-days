@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>A66D695C-C421-41E5-9E97-CA23D3EE4503</string>
+	<key>IDESourceControlProjectName</key>
+	<string>FiveHundredDaysOfKristin</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>5FDC4A65C6C65347FD76915B4D0F7852E8F9BED7</key>
+		<string>github.com:lkvsky/500-days.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>FiveHundredDaysOfKristin.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>5FDC4A65C6C65347FD76915B4D0F7852E8F9BED7</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>github.com:lkvsky/500-days.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>5FDC4A65C6C65347FD76915B4D0F7852E8F9BED7</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>5FDC4A65C6C65347FD76915B4D0F7852E8F9BED7</string>
+			<key>IDESourceControlWCCName</key>
+			<string>FiveHundredDaysOfKristin</string>
+		</dict>
+	</array>
+</dict>
+</plist>

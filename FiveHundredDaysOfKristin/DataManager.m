@@ -146,7 +146,7 @@
     
     if (self.nextPageAvailable) {
         self.lastPageRequested = startIndex;
-        NSString *previousKristinPosts = [NSString stringWithFormat:@"http://api.kinja.com/api/core/tag/search/500-days-of-kristin?startIndex=%ld", startIndex];
+        NSString *previousKristinPosts = [NSString stringWithFormat:@"http://api.kinja.com/api/core/tag/search/500-days-of-kristin?startIndex=%lu", (long)startIndex];
         NSURL *kristinFeedUrl = [[NSURL alloc] initWithString:previousKristinPosts];
         NSURLSessionDataTask *dataTask = [self.urlSession dataTaskWithRequest:[NSURLRequest requestWithURL:kristinFeedUrl]
                                                             completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {

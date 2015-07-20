@@ -28,6 +28,7 @@
 @property (strong, nonatomic) Post *currentPost;
 @property (nonatomic) NSInteger nextPage;
 @property (nonatomic) BOOL isLoadingNextPage;
+@property (nonatomic) BOOL isAnimating;
 @end
 
 @implementation ViewController
@@ -107,6 +108,23 @@
     }
 }
 
+- (void)animateImage
+{
+    self.isAnimating = YES;
+    [UIView animateWithDuration:0.125
+                          delay:0
+                        options:UIViewAnimationOptionAutoreverse
+                     animations:^{
+                         CGAffineTransform t = CGAffineTransformMakeScale(0.73, 0.73);
+                         self.imageView.transform = t;
+                     }
+                     completion:^(BOOL finished) {
+                         CGAffineTransform t = CGAffineTransformMakeScale(0.7, 0.7);
+                         self.imageView.transform = t;
+                         self.isAnimating = NO;
+                     }];
+}
+
 #pragma mark - Scroll Delegate Methods
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
@@ -116,6 +134,10 @@
     if (![self.currentPost isEqual:post]) {
         self.currentPost = post;
         self.headlineView.text = self.currentPost.headline;
+        
+        if (!self.isAnimating) {
+            [self animateImage];
+        }
     }
 }
 
@@ -126,7 +148,7 @@
     Post *post = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
     if ([post.day isEqualToNumber:@1]) {
-        return 565;
+        return 605;
     } else {
         return 200;
     }

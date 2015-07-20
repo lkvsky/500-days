@@ -44,7 +44,7 @@
                                                         toItem:self
                                                      attribute:NSLayoutAttributeBottom
                                                     multiplier:1.0
-                                                      constant:0]];
+                                                      constant:1]];
     [self addConstraint:[NSLayoutConstraint constraintWithItem:timelineView
                                                      attribute:NSLayoutAttributeTrailing
                                                      relatedBy:NSLayoutRelationEqual

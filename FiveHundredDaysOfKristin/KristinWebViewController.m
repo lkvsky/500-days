@@ -62,15 +62,22 @@
 
 -(void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation
 {
-    self.progressView.progress = 1;
     [self.timer invalidate];
-    self.progressView.hidden = YES;
+    
+    [UIView animateWithDuration:0.125
+                     animations:^{
+                         self.progressView.progress = 1;
+                         self.progressView.layer.opacity = 0;
+                     } completion:^(BOOL finished) {
+                         self.progressView.hidden = YES;
+                     }];
 }
 
 - (void)increaseProgressBar
 {
     if (self.progressView.progress >= 0.95) {
         self.progressView.progress = 0.95;
+        [self.timer invalidate];
     } else {
         self.progressView.progress += 0.01;
     }

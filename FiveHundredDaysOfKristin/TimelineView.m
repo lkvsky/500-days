@@ -109,7 +109,7 @@
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
     if ([keyPath isEqualToString:@"day"]) {
-        self.dayLabel.text = [NSString stringWithFormat:@"Day %ld", self.day];
+        self.dayLabel.text = [NSString stringWithFormat:@"Day %i", (int)self.day];
         self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.frame.size.width, kNotchDistance);
 
         [self setNeedsDisplay];
