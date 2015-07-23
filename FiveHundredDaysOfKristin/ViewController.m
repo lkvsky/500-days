@@ -18,17 +18,24 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UILabel *taglineView;
 @property (weak, nonatomic) IBOutlet UILabel *headlineView;
+@property (weak, nonatomic) IBOutlet UIImageView *speechBubble;
+@property (weak, nonatomic) IBOutlet UIView *speechBubbleContainer;
 @property (weak, nonatomic) IBOutlet UITableView *tbView;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *kristinCenterX;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *kristinCenterY;
+@property (weak, nonatomic) IBOutlet UIView *webViewContainer;
+
+// constraints
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tbViewTop;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tbViewHeight;
 
 // data
+@property (strong, nonatomic) KristinWebViewController *webViewController;
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) NSArray *allPosts;
 @property (strong, nonatomic) Post *currentPost;
 @property (nonatomic) NSInteger nextPage;
 @property (nonatomic) BOOL isLoadingNextPage;
 @property (nonatomic) BOOL isAnimating;
+@property (nonatomic) BOOL webViewIsOpen;
 @end
 
 @implementation ViewController
@@ -41,6 +48,7 @@
     [self setupViewAttributes];
     [self setupImageDisplay];
     [self setupTableView];
+    [self setupWebViewContainer];
     [[DataManager sharedInstance] fetchLatestKristinPosts];
 
     // fetch posts
@@ -60,10 +68,6 @@
 
 - (void)setupViewAttributes
 {
-    // setup navigation bar
-    self.navigationController.navigationBar.backgroundColor = [UIColor whiteColor];
-    [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"Allura" size:30]}];
-    
     // setup gradient
     CAGradientLayer *gradient = [ColorManager blueGradient];
     gradient.frame = self.view.bounds;
@@ -92,37 +96,82 @@
 
 - (void)setupTableView
 {
+    self.tbViewTop.constant = self.view.bounds.size.height;
+    self.tbViewHeight.constant = self.view.bounds.size.height;
     self.tbView.backgroundColor = [UIColor clearColor];
-    self.tbView.layer.opacity = 0;
     self.tbView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tbView.showsVerticalScrollIndicator = NO;
     [self.tbView registerNib:[UINib nibWithNibName:@"TableViewCell" bundle:nil] forCellReuseIdentifier:@"TimelineCell"];
 }
 
-- (void)initializeWebview
+- (void)setupWebViewContainer
 {
-    if (self.currentPost) {
-        KristinWebViewController *webViewController = [[KristinWebViewController alloc] initWithNibName:@"KristinWebViewController" bundle:nil];
-        webViewController.permalink = self.currentPost.permalink;
-        [self.navigationController showViewController:webViewController sender:self];
-    }
+    self.webViewContainer.layer.cornerRadius = 10;
+    self.webViewContainer.transform = CGAffineTransformMakeTranslation(-self.view.bounds.size.width, 0);
+    
+    UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(closeWebView)];
+    swipe.direction = UISwipeGestureRecognizerDirectionLeft;
+    [self.view addGestureRecognizer:swipe];
+    
+    UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(closeWebView)];
+    [self.webViewContainer addGestureRecognizer:longPress];
 }
 
-- (void)animateImage
+- (UIView *)setupBackgroundView
 {
-    self.isAnimating = YES;
-    [UIView animateWithDuration:0.125
-                          delay:0
-                        options:UIViewAnimationOptionAutoreverse
-                     animations:^{
-                         CGAffineTransform t = CGAffineTransformMakeScale(0.73, 0.73);
-                         self.imageView.transform = t;
-                     }
-                     completion:^(BOOL finished) {
-                         CGAffineTransform t = CGAffineTransformMakeScale(0.7, 0.7);
-                         self.imageView.transform = t;
-                         self.isAnimating = NO;
-                     }];
+    UIBlurEffect *effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+    UIVisualEffectView *blurView = [[UIVisualEffectView alloc] initWithEffect:effect];
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.view.bounds];
+    UIView *backgroundView = [[UIView alloc] initWithFrame:self.view.bounds];
+    
+    imageView.image = [UIImage imageNamed:@"kristin"];
+    imageView.contentMode = UIViewContentModeScaleAspectFill;
+    blurView.frame = self.view.frame;
+    
+    backgroundView.layer.opacity = 0;
+    
+    [backgroundView addSubview:imageView];
+    [backgroundView addSubview:blurView];
+    
+    return backgroundView;
+}
+
+- (void)setupWebView
+{
+    self.webViewController = [[KristinWebViewController alloc] initWithNibName:@"KristinWebViewController" bundle:nil];
+    [self addChildViewController:self.webViewController];
+    [self.webViewContainer addSubview:self.webViewController.view];
+    self.webViewController.view.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.webViewContainer addConstraint:[NSLayoutConstraint constraintWithItem:self.webViewController.view
+                                                                      attribute:NSLayoutAttributeTop
+                                                                      relatedBy:NSLayoutRelationEqual
+                                                                         toItem:self.webViewContainer
+                                                                      attribute:NSLayoutAttributeTop
+                                                                     multiplier:1.0
+                                                                       constant:0]];
+    [self.webViewContainer addConstraint:[NSLayoutConstraint constraintWithItem:self.webViewController.view
+                                                                      attribute:NSLayoutAttributeBottom
+                                                                      relatedBy:NSLayoutRelationEqual
+                                                                         toItem:self.webViewContainer
+                                                                      attribute:NSLayoutAttributeBottom
+                                                                     multiplier:1.0
+                                                                       constant:0]];
+    [self.webViewContainer addConstraint:[NSLayoutConstraint constraintWithItem:self.webViewController.view
+                                                                      attribute:NSLayoutAttributeLeading
+                                                                      relatedBy:NSLayoutRelationEqual
+                                                                         toItem:self.webViewContainer
+                                                                      attribute:NSLayoutAttributeLeft
+                                                                     multiplier:1.0
+                                                                       constant:0]];
+    [self.webViewContainer addConstraint:[NSLayoutConstraint constraintWithItem:self.webViewController.view
+                                                                      attribute:NSLayoutAttributeTrailing
+                                                                      relatedBy:NSLayoutRelationEqual
+                                                                         toItem:self.webViewContainer
+                                                                      attribute:NSLayoutAttributeRight
+                                                                     multiplier:1.0
+                                                                       constant:0]];
+    
+    [self.webViewController didMoveToParentViewController:self];
 }
 
 #pragma mark - Scroll Delegate Methods
@@ -134,10 +183,6 @@
     if (![self.currentPost isEqual:post]) {
         self.currentPost = post;
         self.headlineView.text = self.currentPost.headline;
-        
-        if (!self.isAnimating) {
-            [self animateImage];
-        }
     }
 }
 
@@ -161,7 +206,7 @@
     
     cell.permalink = post.permalink;
     cell.headline = post.headline;
-    cell.timelineView.day = [post.day integerValue];
+    cell.dayLabel.text = [NSString stringWithFormat:@"%lu", [post.day integerValue]];
     
     return cell;
 }
@@ -224,11 +269,10 @@
 {
     [self reload];
     
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(initializeWebview)];
-    [self.imageView addGestureRecognizer:tap];
-    
     self.currentPost = self.fetchedResultsController.fetchedObjects[0];
     self.headlineView.text = self.currentPost.headline;
+    UIView *backgroundView = [self setupBackgroundView];
+    [self.view addSubview:backgroundView];
 
     double delayInSeconds = 1.0;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
@@ -240,17 +284,33 @@
                               delay:0
                             options:UIViewAnimationOptionCurveEaseIn
                          animations:^{
-                             self.kristinCenterX.constant = -75;
-                             self.kristinCenterY.constant = 150;
-                             [self.view layoutIfNeeded];
-                             self.imageView.transform = CGAffineTransformMakeScale(0.7, 0.7);
-                             self.headlineView.layer.opacity = 1;
+                             [self.view bringSubviewToFront:self.headlineView];
+                             [self.view bringSubviewToFront:self.tbView];
+                             [self.view bringSubviewToFront:self.speechBubbleContainer];
+                             [self.view bringSubviewToFront:self.webViewContainer];
+                             
+                             self.imageView.transform = CGAffineTransformMakeScale(0, 0);
+                             backgroundView.layer.opacity = 1;
                              self.taglineView.layer.opacity = 0;
-                             self.tbView.layer.opacity = 1;
                          }
                          completion:^(BOOL finished) {
                              if (finished) {
                                  [self.taglineView removeFromSuperview];
+                                 [self.imageView removeFromSuperview];
+                                 UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openWebView)];
+                                 [self.speechBubbleContainer addGestureRecognizer:tap];
+                                 
+                                 [UIView animateWithDuration:0.3
+                                                       delay:0.125
+                                      usingSpringWithDamping:0.8
+                                       initialSpringVelocity:0.6
+                                                     options:0
+                                                  animations:^{
+                                                      self.speechBubbleContainer.alpha = 1;
+                                                      self.tbViewTop.constant = 15;
+                                                      [self.view layoutIfNeeded];
+                                                  }
+                                                  completion:nil];
                              }
                          }];
     });
@@ -269,6 +329,42 @@
 }
 
 #pragma mark - Gestures and Events
+
+- (void)openWebView
+{
+    if (self.currentPost) {
+        if (nil == self.webViewController) {
+            [self setupWebView];
+        }
+        
+        self.webViewController.permalink = self.currentPost.permalink;
+    }
+    
+    [UIView animateWithDuration:0.3
+                          delay:0
+         usingSpringWithDamping:0.8
+          initialSpringVelocity:0.6
+                        options:0
+                     animations:^{
+                         self.webViewContainer.transform = CGAffineTransformIdentity;
+                     }
+                     completion:^(BOOL finished){
+                         if (finished) {
+                             self.webViewIsOpen = YES;
+                         }
+                     }];
+}
+
+- (void)closeWebView
+{
+    if (!self.webViewIsOpen) return;
+    
+    [UIView animateWithDuration:0.3
+                     animations:^{
+                         self.webViewContainer.transform = CGAffineTransformMakeTranslation(-self.view.bounds.size.width, 0);
+                         self.webViewIsOpen = NO;
+                     }];
+}
 
 - (void)feedReturned:(NSNotification *)notification
 {

@@ -12,5 +12,5 @@
 @interface TableViewCell : UITableViewCell
 @property (strong, nonatomic) NSString *permalink;
 @property (strong, nonatomic) NSString *headline;
-@property (weak, nonatomic) TimelineView *timelineView;
+@property (weak, nonatomic) IBOutlet UILabel *dayLabel;
 @end

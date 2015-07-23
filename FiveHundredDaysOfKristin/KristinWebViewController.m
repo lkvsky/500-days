@@ -12,6 +12,7 @@
 
 @interface KristinWebViewController () <WKNavigationDelegate>
 @property (weak, nonatomic) IBOutlet UIProgressView *progressView;
+@property (weak, nonatomic) WKWebView *webView;
 @property (strong, nonatomic) NSTimer *timer;
 @end
 
@@ -56,8 +57,13 @@
                                                          multiplier:1.0
                                                            constant:0]];
     
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:0.01667 target:self selector:@selector(increaseProgressBar) userInfo:nil repeats:YES];
-    [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.permalink]]];
+    self.webView = webView;
+    [self addObserver:self forKeyPath:@"permalink" options:0 context:nil];
+}
+
+- (void)dealloc
+{
+    [self removeObserver:self forKeyPath:@"permalink"];
 }
 
 -(void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation
@@ -80,6 +86,17 @@
         [self.timer invalidate];
     } else {
         self.progressView.progress += 0.01;
+    }
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    if ([keyPath isEqualToString:@"permalink"]) {
+        self.progressView.progress = 0;
+        self.progressView.hidden = NO;
+        self.progressView.layer.opacity = 1;
+        self.timer = [NSTimer scheduledTimerWithTimeInterval:0.01667 target:self selector:@selector(increaseProgressBar) userInfo:nil repeats:YES];
+        [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.permalink]]];
     }
 }
 

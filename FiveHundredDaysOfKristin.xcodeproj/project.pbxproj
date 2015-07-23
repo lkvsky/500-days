@@ -11,6 +11,7 @@
 		3C019A861B4471E8004BEE98 /* TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C019A841B4471E8004BEE98 /* TableViewCell.m */; };
 		3C019A871B4471E8004BEE98 /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C019A851B4471E8004BEE98 /* TableViewCell.xib */; };
 		3C7945A51B5840D300BDF22D /* KristinWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C7945A41B5840D300BDF22D /* KristinWebViewController.xib */; };
+		3C7945AD1B5DA08500BDF22D /* Archer-Bold-Pro.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3C7945AC1B5DA04700BDF22D /* Archer-Bold-Pro.otf */; };
 		3CC937FE1B3DD9A300B34EF4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC937FD1B3DD9A300B34EF4 /* main.m */; };
 		3CC938011B3DD9A300B34EF4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC938001B3DD9A300B34EF4 /* AppDelegate.m */; };
 		3CC938041B3DD9A300B34EF4 /* FiveHundredDaysOfKristin.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3CC938021B3DD9A300B34EF4 /* FiveHundredDaysOfKristin.xcdatamodeld */; };
@@ -45,6 +46,7 @@
 		3C019A841B4471E8004BEE98 /* TableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewCell.m; sourceTree = "<group>"; };
 		3C019A851B4471E8004BEE98 /* TableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
 		3C7945A41B5840D300BDF22D /* KristinWebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KristinWebViewController.xib; sourceTree = "<group>"; };
+		3C7945AC1B5DA04700BDF22D /* Archer-Bold-Pro.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Archer-Bold-Pro.otf"; sourceTree = "<group>"; };
 		3CC937F81B3DD9A300B34EF4 /* FiveHundredDaysOfKristin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FiveHundredDaysOfKristin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CC937FC1B3DD9A300B34EF4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3CC937FD1B3DD9A300B34EF4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 		3CC9382C1B3DED1900B34EF4 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				3C7945AC1B5DA04700BDF22D /* Archer-Bold-Pro.otf */,
 				3CC9382D1B3DED2C00B34EF4 /* Allura-Regular.otf */,
 			);
 			name = Fonts;
@@ -291,6 +294,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C7945AD1B5DA08500BDF22D /* Archer-Bold-Pro.otf in Resources */,
 				3C7945A51B5840D300BDF22D /* KristinWebViewController.xib in Resources */,
 				3CC9382E1B3DEF9300B34EF4 /* Allura-Regular.otf in Resources */,
 				3C019A871B4471E8004BEE98 /* TableViewCell.xib in Resources */,
