@@ -26,6 +26,7 @@
     
     WKWebView *webView = [[WKWebView alloc] initWithFrame:CGRectZero];
     webView.translatesAutoresizingMaskIntoConstraints = NO;
+    webView.scrollView.translatesAutoresizingMaskIntoConstraints = NO;
     webView.navigationDelegate = self;
     [self.view addSubview:webView];
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:webView
@@ -66,10 +67,19 @@
     [self removeObserver:self forKeyPath:@"permalink"];
 }
 
--(void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation
+- (void)webView:(WKWebView *)webView didCommitNavigation:(WKNavigation *)navigation
+{
+    // Content size of the web view's scrollview is wider than the frame
+    NSString *webviewResizeString = [NSString stringWithFormat:@"var meta = document.createElement('meta'); " \
+                                     "meta.setAttribute( 'name', 'viewport' ); " \
+                                     "meta.setAttribute( 'content', 'width=%f, initial-scale=1.0, user-scalable=yes'); " \
+                                     "document.getElementsByTagName('head')[0].appendChild(meta)", self.webView.frame.size.width];
+    [self.webView evaluateJavaScript:webviewResizeString completionHandler:nil];
+}
+
+- (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation
 {
     [self.timer invalidate];
-    
     [UIView animateWithDuration:0.125
                      animations:^{
                          self.progressView.progress = 1;

@@ -109,12 +109,13 @@
     self.webViewContainer.layer.cornerRadius = 10;
     self.webViewContainer.transform = CGAffineTransformMakeTranslation(-self.view.bounds.size.width, 0);
     
-    UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(closeWebView)];
-    swipe.direction = UISwipeGestureRecognizerDirectionLeft;
-    [self.view addGestureRecognizer:swipe];
+    UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(closeWebView)];
+    swipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
+    [self.view addGestureRecognizer:swipeLeft];
     
-    UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(closeWebView)];
-    [self.webViewContainer addGestureRecognizer:longPress];
+    UISwipeGestureRecognizer *swipeRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(openWebView)];
+    swipeRight.direction = UISwipeGestureRecognizerDirectionRight;
+    [self.view addGestureRecognizer:swipeRight];
 }
 
 - (UIView *)setupBackgroundView
@@ -332,27 +333,31 @@
 
 - (void)openWebView
 {
+    if (self.webViewIsOpen) return;
+    
     if (self.currentPost) {
         if (nil == self.webViewController) {
             [self setupWebView];
         }
         
         self.webViewController.permalink = self.currentPost.permalink;
-    }
-    
-    [UIView animateWithDuration:0.3
-                          delay:0
-         usingSpringWithDamping:0.8
-          initialSpringVelocity:0.6
-                        options:0
-                     animations:^{
-                         self.webViewContainer.transform = CGAffineTransformIdentity;
-                     }
-                     completion:^(BOOL finished){
-                         if (finished) {
-                             self.webViewIsOpen = YES;
+        
+        [UIView animateWithDuration:0.3
+                              delay:0
+             usingSpringWithDamping:0.8
+              initialSpringVelocity:0.6
+                            options:0
+                         animations:^{
+                             self.webViewContainer.transform = CGAffineTransformIdentity;
+                             self.tbView.transform = CGAffineTransformMakeTranslation(self.view.frame.size.width, 0);
+                             self.speechBubbleContainer.transform = CGAffineTransformMakeTranslation(self.view.frame.size.width, 0);
                          }
-                     }];
+                         completion:^(BOOL finished){
+                             if (finished) {
+                                 self.webViewIsOpen = YES;
+                             }
+                         }];
+    }
 }
 
 - (void)closeWebView
@@ -362,6 +367,8 @@
     [UIView animateWithDuration:0.3
                      animations:^{
                          self.webViewContainer.transform = CGAffineTransformMakeTranslation(-self.view.bounds.size.width, 0);
+                         self.tbView.transform = CGAffineTransformIdentity;
+                         self.speechBubbleContainer.transform = CGAffineTransformIdentity;
                          self.webViewIsOpen = NO;
                      }];
 }

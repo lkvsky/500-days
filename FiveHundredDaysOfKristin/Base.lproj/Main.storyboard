@@ -25,14 +25,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kristin" translatesAutoresizingMaskIntoConstraints="NO" id="7EM-pF-Ibc">
-                                <rect key="frame" x="175" y="175" width="250" height="250"/>
+                                <rect key="frame" x="175" y="100" width="250" height="250"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="250" id="5fv-AE-Df0"/>
                                     <constraint firstAttribute="width" constant="250" id="Dva-2O-IMY"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Will she Balance in Heels?" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tDO-EY-gdp">
-                                <rect key="frame" x="148" y="433" width="305" height="103"/>
+                                <rect key="frame" x="148" y="358" width="305" height="103"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="305" id="9eV-LX-RvL"/>
                                     <constraint firstAttribute="height" constant="103" id="ozJ-X1-f8A"/>
@@ -91,7 +91,7 @@
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="IVu-bt-WXZ" secondAttribute="bottom" constant="20" id="TvV-Aq-SBT"/>
                             <constraint firstItem="zwK-US-dCk" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="WPS-vg-L3S"/>
                             <constraint firstAttribute="trailingMargin" secondItem="IVu-bt-WXZ" secondAttribute="trailing" id="a9y-at-HZd"/>
-                            <constraint firstAttribute="centerY" secondItem="7EM-pF-Ibc" secondAttribute="centerY" id="dEN-OQ-mBQ"/>
+                            <constraint firstAttribute="centerY" secondItem="7EM-pF-Ibc" secondAttribute="centerY" constant="75" id="dEN-OQ-mBQ"/>
                             <constraint firstItem="2NY-zc-Ykb" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="600" id="gmx-yk-zRu"/>
                             <constraint firstItem="2NY-zc-Ykb" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="tY4-Mb-ztt"/>
                             <constraint firstItem="IVu-bt-WXZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="uhA-hc-ZqQ"/>
