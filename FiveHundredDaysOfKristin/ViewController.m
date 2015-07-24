@@ -22,20 +22,23 @@
 @property (weak, nonatomic) IBOutlet UIView *speechBubbleContainer;
 @property (weak, nonatomic) IBOutlet UITableView *tbView;
 @property (weak, nonatomic) IBOutlet UIView *webViewContainer;
+@property (weak, nonatomic) IBOutlet UIButton *readMoreButton;
 
 // constraints
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tbViewTop;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tbViewHeight;
 
-// data
+// data and flags
 @property (strong, nonatomic) KristinWebViewController *webViewController;
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) NSArray *allPosts;
 @property (strong, nonatomic) Post *currentPost;
+@property (strong, nonatomic) NSIndexPath *selectedIndexPath;
 @property (nonatomic) NSInteger nextPage;
 @property (nonatomic) BOOL isLoadingNextPage;
 @property (nonatomic) BOOL isAnimating;
 @property (nonatomic) BOOL webViewIsOpen;
+@property (nonatomic) BOOL timelineSelected;
 @end
 
 @implementation ViewController
@@ -107,13 +110,13 @@
 - (void)setupWebViewContainer
 {
     self.webViewContainer.layer.cornerRadius = 10;
-    self.webViewContainer.transform = CGAffineTransformMakeTranslation(-self.view.bounds.size.width, 0);
+    self.webViewContainer.transform = CGAffineTransformMakeTranslation(self.view.bounds.size.width, 0);
     
-    UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(closeWebView)];
+    UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(openWebView)];
     swipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
     [self.view addGestureRecognizer:swipeLeft];
     
-    UISwipeGestureRecognizer *swipeRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(openWebView)];
+    UISwipeGestureRecognizer *swipeRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(closeWebView)];
     swipeRight.direction = UISwipeGestureRecognizerDirectionRight;
     [self.view addGestureRecognizer:swipeRight];
 }
@@ -179,11 +182,23 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    Post *post = [self.fetchedResultsController objectAtIndexPath:[self.tbView indexPathForCell:self.tbView.visibleCells[0]]];
+    UITableViewCell *topCell = self.tbView.visibleCells[0];
+    NSIndexPath *currentPath = [self.tbView indexPathForCell:topCell];
+    Post *post = [self.fetchedResultsController objectAtIndexPath:currentPath];
     
     if (![self.currentPost isEqual:post]) {
         self.currentPost = post;
         self.headlineView.text = self.currentPost.headline;
+        
+        if (nil != self.selectedIndexPath) {
+            [[self.tbView cellForRowAtIndexPath:self.selectedIndexPath] setSelected:NO animated:NO];
+        }
+        
+        self.selectedIndexPath = currentPath;
+    }
+    
+    if (!self.timelineSelected) {
+        [topCell setSelected:YES animated:NO];
     }
 }
 
@@ -207,7 +222,7 @@
     
     cell.permalink = post.permalink;
     cell.headline = post.headline;
-    cell.dayLabel.text = [NSString stringWithFormat:@"%lu", [post.day integerValue]];
+    cell.dayLabel.text = [NSString stringWithFormat:@"%lu", (long)[post.day integerValue]];
     
     return cell;
 }
@@ -239,8 +254,14 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    self.timelineSelected = YES;
     [tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        self.timelineSelected = NO;
+    });
 }
+
 
 #pragma mark - Fetched Results Controller
 
@@ -274,10 +295,8 @@
     self.headlineView.text = self.currentPost.headline;
     UIView *backgroundView = [self setupBackgroundView];
     [self.view addSubview:backgroundView];
-
-    double delayInSeconds = 1.0;
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-    dispatch_after(popTime, dispatch_get_main_queue(), ^{
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self.view.layer removeAllAnimations];
         [UIView setAnimationRepeatCount:0];
         [UIView setAnimationRepeatAutoreverses:NO];
@@ -290,6 +309,7 @@
                              [self.view bringSubviewToFront:self.speechBubbleContainer];
                              [self.view bringSubviewToFront:self.webViewContainer];
                              
+                             [self.tbView.visibleCells[0] setSelected:YES animated:NO];                             
                              self.imageView.transform = CGAffineTransformMakeScale(0, 0);
                              backgroundView.layer.opacity = 1;
                              self.taglineView.layer.opacity = 0;
@@ -331,6 +351,11 @@
 
 #pragma mark - Gestures and Events
 
+- (IBAction)tapReadMore:(id)sender
+{
+    [self openWebView];
+}
+
 - (void)openWebView
 {
     if (self.webViewIsOpen) return;
@@ -349,8 +374,8 @@
                             options:0
                          animations:^{
                              self.webViewContainer.transform = CGAffineTransformIdentity;
-                             self.tbView.transform = CGAffineTransformMakeTranslation(self.view.frame.size.width, 0);
-                             self.speechBubbleContainer.transform = CGAffineTransformMakeTranslation(self.view.frame.size.width, 0);
+                             self.tbView.transform = CGAffineTransformMakeTranslation(-self.view.frame.size.width, 0);
+                             self.speechBubbleContainer.transform = CGAffineTransformMakeTranslation(-self.view.frame.size.width, 0);
                          }
                          completion:^(BOOL finished){
                              if (finished) {
@@ -366,7 +391,7 @@
     
     [UIView animateWithDuration:0.3
                      animations:^{
-                         self.webViewContainer.transform = CGAffineTransformMakeTranslation(-self.view.bounds.size.width, 0);
+                         self.webViewContainer.transform = CGAffineTransformMakeTranslation(self.view.bounds.size.width, 0);
                          self.tbView.transform = CGAffineTransformIdentity;
                          self.speechBubbleContainer.transform = CGAffineTransformIdentity;
                          self.webViewIsOpen = NO;
