@@ -21,9 +21,13 @@
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="timeline_notch" translatesAutoresizingMaskIntoConstraints="NO" id="3Ay-Eg-0F4">
                         <rect key="frame" x="0.0" y="0.0" width="147" height="200"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="147" id="UOH-Xr-IRO"/>
+                            <constraint firstAttribute="height" constant="200" id="Wqb-NV-ipr"/>
+                        </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e4h-Sg-2N7">
-                        <rect key="frame" x="61" y="19" width="29" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e4h-Sg-2N7">
+                        <rect key="frame" x="61" y="20" width="29" height="21"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="29" id="3pW-kH-i3s"/>
                             <constraint firstAttribute="height" constant="21" id="h2y-nC-yBo"/>
@@ -34,19 +38,19 @@
                     </label>
                     <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="timeline_w_kristin" translatesAutoresizingMaskIntoConstraints="NO" id="epW-Bg-6Ne">
                         <rect key="frame" x="0.0" y="0.0" width="147" height="200"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="147" id="MTy-YC-JxH"/>
+                            <constraint firstAttribute="height" constant="200" id="ye0-NX-vIb"/>
+                        </constraints>
                     </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="e4h-Sg-2N7" firstAttribute="centerX" secondItem="3Ay-Eg-0F4" secondAttribute="centerX" constant="2" id="2UV-Rs-9pn"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="epW-Bg-6Ne" secondAttribute="bottom" constant="-8" id="5uN-n0-Xvj"/>
-                    <constraint firstAttribute="bottom" secondItem="3Ay-Eg-0F4" secondAttribute="bottom" id="9gy-5K-pG2"/>
+                    <constraint firstItem="3Ay-Eg-0F4" firstAttribute="leading" secondItem="epW-Bg-6Ne" secondAttribute="leading" id="6Bw-UN-30B"/>
                     <constraint firstItem="e4h-Sg-2N7" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="GyP-iE-wmm"/>
-                    <constraint firstItem="3Ay-Eg-0F4" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="ISp-Iv-iDV"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="epW-Bg-6Ne" secondAttribute="trailing" constant="-4" id="MBi-be-UxH"/>
-                    <constraint firstItem="epW-Bg-6Ne" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-8" id="P21-KA-If7"/>
-                    <constraint firstItem="3Ay-Eg-0F4" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="hLe-Ko-Yep"/>
-                    <constraint firstItem="epW-Bg-6Ne" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-8" id="oSo-md-4q3"/>
-                    <constraint firstItem="e4h-Sg-2N7" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="11" id="w7s-R1-Fhf"/>
+                    <constraint firstItem="3Ay-Eg-0F4" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="WnM-92-aQD"/>
+                    <constraint firstItem="e4h-Sg-2N7" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="12" id="w7s-R1-Fhf"/>
+                    <constraint firstItem="3Ay-Eg-0F4" firstAttribute="top" secondItem="epW-Bg-6Ne" secondAttribute="top" id="xgB-r2-Thr"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
@@ -58,7 +62,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="timeline_notch" width="66" height="215"/>
+        <image name="timeline_notch" width="66" height="216"/>
         <image name="timeline_w_kristin" width="66" height="215"/>
     </resources>
 </document>

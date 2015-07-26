@@ -128,15 +128,12 @@
 
 - (UIView *)setupBackgroundView
 {
-    UIBlurEffect *effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
-    UIVisualEffectView *blurView = [[UIVisualEffectView alloc] initWithEffect:effect];
+    UIVisualEffectView *blurView = [self getBlurView];
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.view.bounds];
     UIView *backgroundView = [[UIView alloc] initWithFrame:self.view.bounds];
     
     imageView.image = [UIImage imageNamed:@"kristin"];
     imageView.contentMode = UIViewContentModeScaleAspectFill;
-    blurView.frame = self.view.frame;
-    
     backgroundView.layer.opacity = 0;
     
     [backgroundView addSubview:imageView];
@@ -183,6 +180,15 @@
     [self.webViewController didMoveToParentViewController:self];
 }
 
+- (UIVisualEffectView *)getBlurView
+{
+    UIBlurEffect *effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+    UIVisualEffectView *blurView = [[UIVisualEffectView alloc] initWithEffect:effect];
+    blurView.frame = self.view.bounds;
+    
+    return blurView;
+}
+
 #pragma mark - Scroll Delegate Methods
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
@@ -211,7 +217,13 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 200;
+    Post *post = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    
+    if ([post.day isEqualToNumber:@1]) {
+        return self.view.bounds.size.height;
+    } else {
+        return 200;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -381,11 +393,9 @@
                              self.tbView.transform = CGAffineTransformMakeTranslation(-self.view.frame.size.width, 0);
                              self.speechBubbleContainer.transform = CGAffineTransformMakeTranslation(-self.view.frame.size.width, 0);
                          }
-                         completion:^(BOOL finished){
-                             if (finished) {
-                                 self.webViewIsOpen = YES;
-                             }
-                         }];
+                         completion:nil];
+        
+        self.webViewIsOpen = YES;
     }
 }
 
@@ -398,8 +408,9 @@
                          self.webViewSceneWrapper.transform = CGAffineTransformMakeTranslation(self.view.bounds.size.width, 0);
                          self.tbView.transform = CGAffineTransformIdentity;
                          self.speechBubbleContainer.transform = CGAffineTransformIdentity;
-                         self.webViewIsOpen = NO;
                      }];
+    
+    self.webViewIsOpen = NO;
 }
 
 - (void)feedReturned:(NSNotification *)notification
@@ -428,7 +439,65 @@
 
 - (void)networkConnectionLost
 {
-    //todo
+    // setup text label
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
+    label.font = [UIFont fontWithName:@"Archer" size:36];
+    label.text = @"Ugh! There's no internet :(";
+    label.textColor = [UIColor whiteColor];
+    label.translatesAutoresizingMaskIntoConstraints = NO;
+    label.lineBreakMode = NSLineBreakByWordWrapping;
+    label.numberOfLines = 0;
+    label.textAlignment = NSTextAlignmentCenter;
+    
+    // setup blur view for alert
+    UIVisualEffectView *blurView = [self getBlurView];
+    blurView.layer.opacity = 0;
+    [blurView.contentView addSubview:label];
+    [blurView addConstraint:[NSLayoutConstraint constraintWithItem:label
+                                                         attribute:NSLayoutAttributeCenterX
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:blurView
+                                                         attribute:NSLayoutAttributeCenterX
+                                                        multiplier:1.0
+                                                          constant:0]];
+    [blurView addConstraint:[NSLayoutConstraint constraintWithItem:label
+                                                         attribute:NSLayoutAttributeCenterY
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:blurView
+                                                         attribute:NSLayoutAttributeCenterY
+                                                        multiplier:1.0
+                                                          constant:0]];
+    [blurView addConstraint:[NSLayoutConstraint constraintWithItem:label
+                                                      attribute:NSLayoutAttributeWidth
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:blurView
+                                                         attribute:NSLayoutAttributeWidth
+                                                        multiplier:1.0
+                                                          constant:-20]];
+    [self.view addSubview:blurView];
+    
+    // fade in alert and then remove after 3 seconds
+    [self.view addSubview:blurView];
+    
+    if (self.webViewIsOpen) {
+        [self closeWebView];
+    }
+    
+    [UIView animateWithDuration:0.3
+                     animations:^{
+                         blurView.layer.opacity = 1;
+                     }
+                     completion:^(BOOL finished) {
+                         [UIView animateWithDuration:0.3
+                                               delay:3.0
+                                             options:0
+                                          animations:^{
+                                              blurView.layer.opacity = 0;
+                                          }
+                                          completion:^(BOOL finished) {
+                                              [blurView removeFromSuperview];
+                                          }];
+                     }];
 }
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "KristinWebViewController.h"
+#import "DataManager.h"
 
 @import WebKit;
 
@@ -99,6 +100,16 @@
                      } completion:^(BOOL finished) {
                          self.progressView.hidden = YES;
                      }];
+}
+
+- (void)webView:(WKWebView *)webView didFailNavigation:(WKNavigation *)navigation withError:(NSError *)error
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:kNetworkConnectionError object:nil];
+}
+
+- (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(WKNavigation *)navigation withError:(NSError *)error
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:kNetworkConnectionError object:nil];
 }
 
 #pragma mark - Gestures and Events
