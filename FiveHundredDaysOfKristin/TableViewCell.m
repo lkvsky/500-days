@@ -10,6 +10,7 @@
 
 @interface TableViewCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *notchImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *selectedImage;
 @end
 
 @implementation TableViewCell
@@ -24,11 +25,15 @@
     [super setSelected:selected animated:animated];
     
     if (selected) {
-        self.notchImageView.image = [UIImage imageNamed:@"timeline_w_kristin"];
-        self.dayLabel.layer.opacity = 0;
+        [UIView animateWithDuration:0.125
+                         animations:^{
+                             self.selectedImage.layer.opacity = 1;
+                         }];
     } else {
-        self.notchImageView.image = [UIImage imageNamed:@"timeline_notch"];
-        self.dayLabel.layer.opacity = 1;
+        [UIView animateWithDuration:0.125
+                         animations:^{
+                             self.selectedImage.layer.opacity = 0;
+                         }];
     }
 }
 

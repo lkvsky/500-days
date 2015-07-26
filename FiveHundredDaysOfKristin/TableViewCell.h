@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TimelineView.h"
 
 @interface TableViewCell : UITableViewCell
 @property (strong, nonatomic) NSString *permalink;

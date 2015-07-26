@@ -22,8 +22,6 @@
 		3CC9381B1B3DD9A300B34EF4 /* FiveHundredDaysOfKristinTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC9381A1B3DD9A300B34EF4 /* FiveHundredDaysOfKristinTests.m */; };
 		3CC938271B3DDAF500B34EF4 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC938261B3DDAF500B34EF4 /* DataManager.m */; };
 		3CC9382B1B3DE60400B34EF4 /* ColorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC9382A1B3DE60400B34EF4 /* ColorManager.m */; };
-		3CC9382E1B3DEF9300B34EF4 /* Allura-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3CC9382D1B3DED2C00B34EF4 /* Allura-Regular.otf */; };
-		3CC938401B3F231D00B34EF4 /* TimelineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC9383F1B3F231D00B34EF4 /* TimelineView.m */; };
 		3CC938451B3F4EA000B34EF4 /* KristinWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC938431B3F4EA000B34EF4 /* KristinWebViewController.m */; };
 		3CC9384A1B4321F900B34EF4 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CC938481B4321F900B34EF4 /* Fabric.framework */; };
 		3CC9384B1B4321F900B34EF4 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CC938491B4321F900B34EF4 /* Crashlytics.framework */; };
@@ -65,9 +63,6 @@
 		3CC938261B3DDAF500B34EF4 /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
 		3CC938291B3DE60400B34EF4 /* ColorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorManager.h; sourceTree = "<group>"; };
 		3CC9382A1B3DE60400B34EF4 /* ColorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorManager.m; sourceTree = "<group>"; };
-		3CC9382D1B3DED2C00B34EF4 /* Allura-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Allura-Regular.otf"; sourceTree = "<group>"; };
-		3CC9383E1B3F231D00B34EF4 /* TimelineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelineView.h; sourceTree = "<group>"; };
-		3CC9383F1B3F231D00B34EF4 /* TimelineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelineView.m; sourceTree = "<group>"; };
 		3CC938421B3F4EA000B34EF4 /* KristinWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KristinWebViewController.h; sourceTree = "<group>"; };
 		3CC938431B3F4EA000B34EF4 /* KristinWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KristinWebViewController.m; sourceTree = "<group>"; };
 		3CC938481B4321F900B34EF4 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
@@ -182,7 +177,6 @@
 			isa = PBXGroup;
 			children = (
 				3C7945AC1B5DA04700BDF22D /* Archer-Bold-Pro.otf */,
-				3CC9382D1B3DED2C00B34EF4 /* Allura-Regular.otf */,
 			);
 			name = Fonts;
 			sourceTree = "<group>";
@@ -190,8 +184,6 @@
 		3CC9383D1B3F22FE00B34EF4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				3CC9383E1B3F231D00B34EF4 /* TimelineView.h */,
-				3CC9383F1B3F231D00B34EF4 /* TimelineView.m */,
 				3C019A831B4471E8004BEE98 /* TableViewCell.h */,
 				3C019A841B4471E8004BEE98 /* TableViewCell.m */,
 				3C019A851B4471E8004BEE98 /* TableViewCell.xib */,
@@ -296,7 +288,6 @@
 			files = (
 				3C7945AD1B5DA08500BDF22D /* Archer-Bold-Pro.otf in Resources */,
 				3C7945A51B5840D300BDF22D /* KristinWebViewController.xib in Resources */,
-				3CC9382E1B3DEF9300B34EF4 /* Allura-Regular.otf in Resources */,
 				3C019A871B4471E8004BEE98 /* TableViewCell.xib in Resources */,
 				3CC9380A1B3DD9A300B34EF4 /* Main.storyboard in Resources */,
 				3CC9380F1B3DD9A300B34EF4 /* LaunchScreen.xib in Resources */,
@@ -338,7 +329,6 @@
 				3CC9382B1B3DE60400B34EF4 /* ColorManager.m in Sources */,
 				3CC938271B3DDAF500B34EF4 /* DataManager.m in Sources */,
 				3C019A861B4471E8004BEE98 /* TableViewCell.m in Sources */,
-				3CC938401B3F231D00B34EF4 /* TimelineView.m in Sources */,
 				3C019A7F1B446440004BEE98 /* Post.m in Sources */,
 				3CC938041B3DD9A300B34EF4 /* FiveHundredDaysOfKristin.xcdatamodeld in Sources */,
 				3CC938071B3DD9A300B34EF4 /* ViewController.m in Sources */,

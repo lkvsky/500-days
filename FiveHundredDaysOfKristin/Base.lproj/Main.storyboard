@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -99,35 +98,54 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IVu-bt-WXZ">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OrU-g5-2Rf">
                                 <rect key="frame" x="16" y="20" width="568" height="560"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <subviews>
+                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IVu-bt-WXZ">
+                                        <rect key="frame" x="0.0" y="66" width="568" height="494"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HEy-nT-SvP">
+                                        <rect key="frame" x="8" y="11" width="552" height="45"/>
+                                        <state key="normal" image="back_btn">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="tapBackButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="B2n-Tl-jDS"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="IVu-bt-WXZ" firstAttribute="leading" secondItem="OrU-g5-2Rf" secondAttribute="leading" id="5do-jP-bMR"/>
+                                    <constraint firstAttribute="trailing" secondItem="IVu-bt-WXZ" secondAttribute="trailing" id="KOX-de-6NL"/>
+                                    <constraint firstItem="HEy-nT-SvP" firstAttribute="top" secondItem="OrU-g5-2Rf" secondAttribute="top" constant="11" id="UAY-mu-aJB"/>
+                                    <constraint firstItem="IVu-bt-WXZ" firstAttribute="top" secondItem="HEy-nT-SvP" secondAttribute="bottom" constant="10" id="Zcb-CT-nDa"/>
+                                    <constraint firstItem="HEy-nT-SvP" firstAttribute="leading" secondItem="OrU-g5-2Rf" secondAttribute="leading" constant="8" id="c0z-SV-48e"/>
+                                    <constraint firstAttribute="trailing" secondItem="HEy-nT-SvP" secondAttribute="trailing" constant="8" id="gTA-uc-slt"/>
+                                    <constraint firstItem="IVu-bt-WXZ" firstAttribute="top" secondItem="HEy-nT-SvP" secondAttribute="bottom" constant="10" id="hjy-R5-hTb"/>
+                                    <constraint firstAttribute="bottom" secondItem="IVu-bt-WXZ" secondAttribute="bottom" id="reY-19-hhL"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="7EM-pF-Ibc" firstAttribute="centerX" secondItem="tDO-EY-gdp" secondAttribute="centerX" constant="-0.5" id="7A4-tM-2tL"/>
                             <constraint firstItem="tDO-EY-gdp" firstAttribute="top" secondItem="7EM-pF-Ibc" secondAttribute="bottom" constant="8" symbolic="YES" id="8bN-QW-Bcn"/>
+                            <constraint firstItem="OrU-g5-2Rf" firstAttribute="trailing" secondItem="zwK-US-dCk" secondAttribute="trailing" id="D0M-0Q-6C2"/>
                             <constraint firstItem="zwK-US-dCk" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="FH1-9S-rNj"/>
-                            <constraint firstItem="IVu-bt-WXZ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Fmc-8h-VEZ"/>
+                            <constraint firstItem="OrU-g5-2Rf" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="JN2-Xi-cwn"/>
                             <constraint firstAttribute="centerX" secondItem="7EM-pF-Ibc" secondAttribute="centerX" id="Su2-Uq-l9l"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="IVu-bt-WXZ" secondAttribute="bottom" constant="20" id="TvV-Aq-SBT"/>
                             <constraint firstItem="zwK-US-dCk" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="WPS-vg-L3S"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="IVu-bt-WXZ" secondAttribute="trailing" id="a9y-at-HZd"/>
                             <constraint firstAttribute="centerY" secondItem="7EM-pF-Ibc" secondAttribute="centerY" constant="75" id="dEN-OQ-mBQ"/>
+                            <constraint firstAttribute="bottom" secondItem="OrU-g5-2Rf" secondAttribute="bottom" constant="20" symbolic="YES" id="eUZ-ME-qpi"/>
                             <constraint firstItem="2NY-zc-Ykb" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="600" id="gmx-yk-zRu"/>
+                            <constraint firstItem="OrU-g5-2Rf" firstAttribute="leading" secondItem="2NY-zc-Ykb" secondAttribute="leading" id="iBZ-h6-AHF"/>
                             <constraint firstItem="2NY-zc-Ykb" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="tY4-Mb-ztt"/>
-                            <constraint firstItem="IVu-bt-WXZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="uhA-hc-ZqQ"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="IVu-bt-WXZ" secondAttribute="bottomMargin" id="zax-h2-nds"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="zax-h2-nds"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="500 Days of Kristin" id="TdU-NW-aEZ"/>
                     <connections>
+                        <outlet property="backButton" destination="HEy-nT-SvP" id="W4D-WR-m3o"/>
                         <outlet property="headlineView" destination="JXI-If-JUM" id="m0n-Av-3O6"/>
                         <outlet property="imageView" destination="7EM-pF-Ibc" id="zh3-iS-4Km"/>
                         <outlet property="readMoreButton" destination="F8X-qV-Hb4" id="VGa-5L-JxT"/>
@@ -138,6 +156,7 @@
                         <outlet property="tbViewHeight" destination="ObC-JX-2MM" id="Ucy-vZ-Vcz"/>
                         <outlet property="tbViewTop" destination="gmx-yk-zRu" id="C4L-IC-NR1"/>
                         <outlet property="webViewContainer" destination="IVu-bt-WXZ" id="tFz-ub-m3X"/>
+                        <outlet property="webViewSceneWrapper" destination="OrU-g5-2Rf" id="4Gv-CY-80M"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -146,6 +165,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="back_btn" width="335" height="45"/>
         <image name="kristin" width="636" height="399"/>
         <image name="read_more" width="225" height="45"/>
         <image name="speech_bubble" width="245" height="209"/>

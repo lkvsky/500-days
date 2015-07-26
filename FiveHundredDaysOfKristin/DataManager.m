@@ -150,12 +150,16 @@
         NSURL *kristinFeedUrl = [[NSURL alloc] initWithString:previousKristinPosts];
         NSURLSessionDataTask *dataTask = [self.urlSession dataTaskWithRequest:[NSURLRequest requestWithURL:kristinFeedUrl]
                                                             completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-                                                                NSDictionary *results = [self parseFeedData:data withResponse:response withError:error];
-                                                                [self createPostsFromResults:results];
-                                                                NSArray *allKristinPosts = [self allKristinPosts];
-                                                                
-                                                                if (allKristinPosts.count > 0) {
-                                                                    [[NSNotificationCenter defaultCenter] postNotificationName:kPreviousFeedReturned object:nil userInfo:@{@"posts": allKristinPosts}];
+                                                                if (nil != error) {
+                                                                    
+                                                                } else {
+                                                                    NSDictionary *results = [self parseFeedData:data withResponse:response withError:error];
+                                                                    [self createPostsFromResults:results];
+                                                                    NSArray *allKristinPosts = [self allKristinPosts];
+                                                                    
+                                                                    if (allKristinPosts.count > 0) {
+                                                                        [[NSNotificationCenter defaultCenter] postNotificationName:kPreviousFeedReturned object:nil userInfo:@{@"posts": allKristinPosts}];
+                                                                    }
                                                                 }
                                                             }];
         
@@ -165,42 +169,24 @@
 
 - (void)fetchLatestKristinPosts
 {
-    NSArray __block *allKristinPosts = [self allKristinPosts];
-    
-    void (^fetchPosts)() = ^{
-        static NSString *kristinFeed = @"http://api.kinja.com/api/core/tag/search/500-days-of-kristin";
-        NSURL *kristinFeedUrl = [[NSURL alloc] initWithString:kristinFeed];
-        NSURLSessionDataTask *dataTask = [self.urlSession dataTaskWithRequest:[NSURLRequest requestWithURL:kristinFeedUrl]
-                                                            completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+    static NSString *kristinFeed = @"http://api.kinja.com/api/core/tag/search/500-days-of-kristin";
+    NSURL *kristinFeedUrl = [[NSURL alloc] initWithString:kristinFeed];
+    NSURLSessionDataTask *dataTask = [self.urlSession dataTaskWithRequest:[NSURLRequest requestWithURL:kristinFeedUrl]
+                                                        completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                                            if (nil != error) {
+                                                                [[NSNotificationCenter defaultCenter] postNotificationName:kNetworkConnectionError object:nil];
+                                                            } else {
                                                                 NSDictionary *results = [self parseFeedData:data withResponse:response withError:error];
                                                                 [self createPostsFromResults:results];
-                                                                allKristinPosts = [self allKristinPosts];
+                                                                NSArray *allKristinPosts = [self allKristinPosts];
                                                                 
                                                                 if (allKristinPosts.count > 0) {
                                                                     [[NSNotificationCenter defaultCenter] postNotificationName:kFeedReturned object:nil userInfo:@{@"posts": allKristinPosts}];
                                                                 }
-                                                            }];
-        
-        [dataTask resume];
-    };
+                                                            }
+                                                        }];
     
-    if (allKristinPosts.count > 0) {
-        Post *post = [allKristinPosts firstObject];
-        
-        NSCalendar *cal = [NSCalendar currentCalendar];
-        NSDateComponents *components = [cal components:(NSCalendarUnitEra|NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay) fromDate:[NSDate date]];
-        NSDate *today = [cal dateFromComponents:components];
-        components = [cal components:(NSCalendarUnitEra|NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay) fromDate:post.publishTime];
-        NSDate *postDate = [cal dateFromComponents:components];
-        
-        if ([postDate isEqualToDate:today]) {
-            [[NSNotificationCenter defaultCenter] postNotificationName:kFeedReturned object:nil userInfo:@{@"posts":allKristinPosts}];
-        } else {
-            fetchPosts();
-        }
-    } else {
-        fetchPosts();
-    }
+    [dataTask resume];
 }
 
 - (NSArray *)allKristinPosts

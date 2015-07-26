@@ -14,15 +14,19 @@
 #import "TableViewCell.h"
 
 @interface ViewController ()  <UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource>
-// views
+// timeline scene
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UILabel *taglineView;
 @property (weak, nonatomic) IBOutlet UILabel *headlineView;
 @property (weak, nonatomic) IBOutlet UIImageView *speechBubble;
 @property (weak, nonatomic) IBOutlet UIView *speechBubbleContainer;
 @property (weak, nonatomic) IBOutlet UITableView *tbView;
-@property (weak, nonatomic) IBOutlet UIView *webViewContainer;
 @property (weak, nonatomic) IBOutlet UIButton *readMoreButton;
+
+// webview scene
+@property (weak, nonatomic) IBOutlet UIView *webViewContainer;
+@property (weak, nonatomic) IBOutlet UIView *webViewSceneWrapper;
+@property (weak, nonatomic) IBOutlet UIButton *backButton;
 
 // constraints
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tbViewTop;
@@ -54,12 +58,13 @@
     [self setupWebViewContainer];
     [[DataManager sharedInstance] fetchLatestKristinPosts];
 
-    // fetch posts
+    // fetch posts and handle errors
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(feedReturned:) name:kFeedReturned object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(nextPageAvailable:) name:kNextPageAvailable object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(nextPageUnavailable) name:kNextPageUnavailable object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(nextPageAvailable:) name:kRequestingSamePageError object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(previousPostsReturned:) name:kPreviousFeedReturned object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(networkConnectionLost) name:kNetworkConnectionError object:nil];
 }
 
 - (void)dealloc
@@ -110,7 +115,7 @@
 - (void)setupWebViewContainer
 {
     self.webViewContainer.layer.cornerRadius = 10;
-    self.webViewContainer.transform = CGAffineTransformMakeTranslation(self.view.bounds.size.width, 0);
+    self.webViewSceneWrapper.transform = CGAffineTransformMakeTranslation(self.view.bounds.size.width, 0);
     
     UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(openWebView)];
     swipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
@@ -206,13 +211,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    Post *post = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    
-    if ([post.day isEqualToNumber:@1]) {
-        return 605;
-    } else {
-        return 200;
-    }
+    return 200;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -307,7 +306,7 @@
                              [self.view bringSubviewToFront:self.headlineView];
                              [self.view bringSubviewToFront:self.tbView];
                              [self.view bringSubviewToFront:self.speechBubbleContainer];
-                             [self.view bringSubviewToFront:self.webViewContainer];
+                             [self.view bringSubviewToFront:self.webViewSceneWrapper];
                              
                              [self.tbView.visibleCells[0] setSelected:YES animated:NO];                             
                              self.imageView.transform = CGAffineTransformMakeScale(0, 0);
@@ -356,6 +355,11 @@
     [self openWebView];
 }
 
+- (IBAction)tapBackButton:(id)sender
+{
+    [self closeWebView];
+}
+
 - (void)openWebView
 {
     if (self.webViewIsOpen) return;
@@ -373,7 +377,7 @@
               initialSpringVelocity:0.6
                             options:0
                          animations:^{
-                             self.webViewContainer.transform = CGAffineTransformIdentity;
+                             self.webViewSceneWrapper.transform = CGAffineTransformIdentity;
                              self.tbView.transform = CGAffineTransformMakeTranslation(-self.view.frame.size.width, 0);
                              self.speechBubbleContainer.transform = CGAffineTransformMakeTranslation(-self.view.frame.size.width, 0);
                          }
@@ -391,7 +395,7 @@
     
     [UIView animateWithDuration:0.3
                      animations:^{
-                         self.webViewContainer.transform = CGAffineTransformMakeTranslation(self.view.bounds.size.width, 0);
+                         self.webViewSceneWrapper.transform = CGAffineTransformMakeTranslation(self.view.bounds.size.width, 0);
                          self.tbView.transform = CGAffineTransformIdentity;
                          self.speechBubbleContainer.transform = CGAffineTransformIdentity;
                          self.webViewIsOpen = NO;
@@ -420,6 +424,11 @@
 - (void)nextPageUnavailable
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kNextPageAvailable object:nil];
+}
+
+- (void)networkConnectionLost
+{
+    //todo
 }
 
 @end

@@ -15,6 +15,7 @@
 #define kNextPageAvailable @"KristinNextPageAvailable"
 #define kNextPageUnavailable @"KristinNextPageUnavailable"
 #define kRequestingSamePageError @"KristinRequestingSamePageError"
+#define kNetworkConnectionError @"KristinNetworkConnectionError"
 
 @interface DataManager : NSObject
 @property (strong, nonatomic) NSManagedObjectContext *readingContext;

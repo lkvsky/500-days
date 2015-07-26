@@ -67,6 +67,18 @@
     [self removeObserver:self forKeyPath:@"permalink"];
 }
 
+- (void)increaseProgressBar
+{
+    if (self.progressView.progress >= 0.95) {
+        self.progressView.progress = 0.95;
+        [self.timer invalidate];
+    } else {
+        self.progressView.progress += 0.01;
+    }
+}
+
+#pragma mark - Webview Delegate Methods
+
 - (void)webView:(WKWebView *)webView didCommitNavigation:(WKNavigation *)navigation
 {
     // Content size of the web view's scrollview is wider than the frame
@@ -89,15 +101,7 @@
                      }];
 }
 
-- (void)increaseProgressBar
-{
-    if (self.progressView.progress >= 0.95) {
-        self.progressView.progress = 0.95;
-        [self.timer invalidate];
-    } else {
-        self.progressView.progress += 0.01;
-    }
-}
+#pragma mark - Gestures and Events
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
