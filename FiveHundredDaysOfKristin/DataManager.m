@@ -126,9 +126,9 @@
     }
     
     if (results[@"pagination"] && results[@"pagination"][@"next"]) {
-        self.nextPage = [results[@"pagination"][@"next"][@"startIndex"] integerValue];
+        self.nextPage = [results[@"pagination"][@"next"][@"startTime"] integerValue];
         self.nextPageAvailable = YES;
-        [[NSNotificationCenter defaultCenter] postNotificationName:kNextPageAvailable object:nil userInfo:@{@"startIndex": results[@"pagination"][@"next"][@"startIndex"]}];
+        [[NSNotificationCenter defaultCenter] postNotificationName:kNextPageAvailable object:nil userInfo:@{@"startTime": results[@"pagination"][@"next"][@"startTime"]}];
     } else {
         self.nextPage = 0;
         self.nextPageAvailable = NO;
@@ -138,15 +138,15 @@
     [self saveInsertionContext];
 }
 
-- (void)fetchPreviousBatchOfPosts:(NSInteger)startIndex
+- (void)fetchPreviousBatchOfPosts:(NSInteger)startTime
 {
-    if (self.lastPageRequested && self.lastPageRequested == startIndex) {
+    if (self.lastPageRequested && self.lastPageRequested == startTime) {
         return;
     }
     
     if (self.nextPageAvailable) {
-        self.lastPageRequested = startIndex;
-        NSString *previousKristinPosts = [NSString stringWithFormat:@"http://api.kinja.com/api/core/tag/search/500-days-of-kristin?startIndex=%lu", (long)startIndex];
+        self.lastPageRequested = startTime;
+         NSString *previousKristinPosts = [NSString stringWithFormat:@"http://api.kinja.com/api/core/tag/500-days-of-kristin?startTime=%lu", (long)startTime];
         NSURL *kristinFeedUrl = [[NSURL alloc] initWithString:previousKristinPosts];
         NSURLSessionDataTask *dataTask = [self.urlSession dataTaskWithRequest:[NSURLRequest requestWithURL:kristinFeedUrl]
                                                             completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
@@ -169,7 +169,7 @@
 
 - (void)fetchLatestKristinPosts
 {
-    static NSString *kristinFeed = @"http://api.kinja.com/api/core/tag/search/500-days-of-kristin";
+    static NSString *kristinFeed = @"http://api.kinja.com/api/core/tag/500-days-of-kristin";
     NSURL *kristinFeedUrl = [[NSURL alloc] initWithString:kristinFeed];
     NSURLSessionDataTask *dataTask = [self.urlSession dataTaskWithRequest:[NSURLRequest requestWithURL:kristinFeedUrl]
                                                         completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {

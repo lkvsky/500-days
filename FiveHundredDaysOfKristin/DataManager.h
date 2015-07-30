@@ -21,7 +21,7 @@
 @property (strong, nonatomic) NSManagedObjectContext *readingContext;
 
 + (instancetype)sharedInstance;
-- (void)fetchPreviousBatchOfPosts:(NSInteger)startingIndex;
+- (void)fetchPreviousBatchOfPosts:(NSInteger)startTime;
 - (void)fetchLatestKristinPosts;
 - (void)createManagedObjectContextsWithPersistentStoreCoordinator:(NSPersistentStoreCoordinator *)persistentStoreCoordinator;
 @end

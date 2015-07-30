@@ -429,7 +429,7 @@
 
 - (void)nextPageAvailable:(NSNotification *)notification
 {
-    self.nextPage = [notification.userInfo[@"startIndex"] integerValue];
+    self.nextPage = [notification.userInfo[@"startTime"] integerValue];
 }
 
 - (void)nextPageUnavailable
